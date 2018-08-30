@@ -204,7 +204,7 @@ def get_model_from_path_string(root_model, path):
                         root_model = field.related.parent_model()
                     except AttributeError:
                         root_model = field.related.model
-                elif hasattr(field, 'related_model'):
+                elif getattr(field, 'related_model', None):
                     root_model = field.related_model
             else:
                 if hasattr(field, 'related_model'):
